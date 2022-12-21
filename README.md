@@ -5,9 +5,7 @@ Whenever you go to the bank to deposit some cash money, the cashier places bankn
 “BankNote_Authentication.csv” we have four features: variance, skew, curtosis and entropy and the class attribute refers to whether or not the banknote is real or forged.
 
 # Experiment with different values of k=1,2,3....9
-<div class="WordSection1" align="center">
-
-<p class="MsoBodyText" align="center" style="margin-top:3.3pt;margin-right:128.15pt;
+<div class="WordSection1" align="center"><p class="MsoBodyText" align="center" style="margin-top:3.3pt;margin-right:128.15pt;
 margin-bottom:0cm;margin-left:127.25pt;margin-bottom:.0001pt;text-align:center"><table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="margin-left:5.8pt;border-collapse:collapse;mso-table-layout-alt:fixed;
  border:none;mso-border-alt:solid black .75pt;mso-yfti-tbllook:480;mso-padding-alt:
  0cm 0cm 0cm 0cm;mso-border-insideh:.75pt solid black;mso-border-insidev:.75pt solid black">
@@ -490,7 +488,4 @@ margin-bottom:0cm;margin-left:127.25pt;margin-bottom:.0001pt;text-align:center">
   mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
   mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
   <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
-</tbody></table><br></p></div>
+  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p></td></tr></tbody></table><br></p></div>
