@@ -335,7 +335,7 @@ This code provides implementation of a KNN classifier from scratch using Python.
 Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request.
 
 
-## Authors
+## Team
 
 - [Khaled Ashraf Hanafy Mahmoud - 20190186](https://github.com/KhaledAshrafH).
 - [Noura Ashraf Abdelnaby Mansour - 20190592](https://github.com/NouraAshraff).
