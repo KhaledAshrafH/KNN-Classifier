@@ -1,10 +1,56 @@
-# KNN-Classifier
-K-Nearest_Neighbours Classifier implementation from scratch in python and tells whether a banknote is real or not in dataset "BankNote_Authentication.csv".
+# K-Nearest Neighbors (KNN) Classifier from Scratch
 
-Whenever you go to the bank to deposit some cash money, the cashier places banknotes in a machine that tells whether a banknote is real or not. In the
-“BankNote_Authentication.csv” we have four features: variance, skew, curtosis and entropy and the class attribute refers to whether or not the banknote is real or forged.
+This repository contains a Python implementation of a K-Nearest Neighbors (KNN) classifier from scratch. The KNN classifier is applied to the "BankNote_Authentication" dataset, which consists of four features (variance, skew, curtosis, and entropy) and a class attribute indicating whether a banknote is real or forged.
 
-# Experiment with different values of k=1,2,3....9
+## Dataset
+
+The dataset used for training and testing the KNN classifier is provided in the "BankNote_Authentication.csv" file. The dataset is loaded into a pandas DataFrame and then shuffled to ensure randomization during training and testing.
+
+## KNN Classifier Implementation
+
+The KNN classifier is implemented in the `KNN_Classifier` class. The class takes the following inputs during initialization:
+
+- `x_train`: The training data features.
+- `y_train`: The training data labels.
+- `x_test`: The test data features.
+- `k`: The number of nearest neighbors to consider.
+
+The KNN classifier consists of the following methods:
+
+### 1. `euclidean_distance`
+
+This method calculates the Euclidean distance between a training row and a test row. It takes two input vectors and computes the Euclidean distance according to the formula:
+```
+distance = sqrt(sum((x_train_row[i] - x_test_row[i])^2))
+```
+
+### 2. `predict`
+
+This method predicts the class for each test point based on the K-nearest neighbors in the training data. For each test point, the Euclidean distance is calculated between the test point and all training points. The K-nearest neighbors with the smallest distances are determined, and their corresponding class labels are counted. If there is a tie in the number of votes for different classes, the tie is broken in favor of the class that comes first in the training data.
+
+### 3. `calc_accuracy`
+
+This method calculates the accuracy of the KNN classifier by comparing the predicted labels with the true labels for the test data. The accuracy is computed as the ratio of correctly classified instances to the total number of instances in the test set.
+
+## Normalization
+
+Before training and testing the KNN classifier, the feature columns are normalized separately using the mean and standard deviation of the values in the training data. Each feature is transformed using the function:
+```
+f(v) = (v - mean) / std
+```
+
+This normalization ensures that each feature contributes equally to the distance calculation.
+
+## Training and Testing
+
+The dataset is split into 70% for training and 30% for testing. The training and test sets are created by dividing the feature and label arrays accordingly.
+
+The KNN classifier is then trained on the training data and tested on the test data for different values of K ranging from 1 to 9. For each value of K, the classifier's accuracy is calculated and stored in a list.
+
+## Experiment
+
+The KNN classifier is evaluated using different values of K ranging from 1 to 15. The accuracy of the classifier is measured for each K value, and the results are summarized in the following table:
+
 <div class="WordSection1" align="center"><p class="MsoBodyText" align="center" style="margin-top:3.3pt;margin-right:128.15pt;
 margin-bottom:0cm;margin-left:127.25pt;margin-bottom:.0001pt;text-align:center"><table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="margin-left:5.8pt;border-collapse:collapse;mso-table-layout-alt:fixed;
  border:none;mso-border-alt:solid black .75pt;mso-yfti-tbllook:480;mso-padding-alt:
@@ -266,226 +312,36 @@ margin-bottom:0cm;margin-left:127.25pt;margin-bottom:.0001pt;text-align:center">
   center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9975728155339806<o:p></o:p></span></p>
   </td>
  </tr>
- <tr style="mso-yfti-irow:16;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">16<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9951456310679612<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:17;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">17<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9951456310679612<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:18;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">18<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:19;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">19<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:20;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">20<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:21;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">21<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:22;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">22<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:23;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">23<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:24;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">24<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:25;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">25<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:26;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">26<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:27;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">27<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:28;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">28<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:29;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">29<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style="mso-yfti-irow:30;mso-yfti-lastrow:yes;height:21.9pt">
-  <td width="359" valign="top" style="width:269.3pt;border:solid black 1.0pt;
-  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
-  padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">30<o:p></o:p></span></p>
-  </td>
-  <td width="359" valign="top" style="width:269.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
-  mso-border-alt:solid black .75pt;padding:0cm 0cm 0cm 0cm;height:21.9pt">
-  <p class="TableParagraph" align="center" style="margin-left:55.65pt;text-align:
-  center"><span style="font-size:16.0pt;mso-bidi-font-size:11.0pt">0.9902912621359223<o:p></o:p></span></p></td></tr></tbody></table><br></p></div>
+ </tbody></table><br></p></div>
+
+## Results
+
+The results of the KNN classifier for different values of K are displayed in the console. The output includes the value of K used for the test set and summary information for each K value, including the number of correctly classified test instances, the total number of instances in the test set, and the accuracy.
+
+An example of the output:
+```
+K Value: 12
+Number of correctly classified instances: 444
+Total number of instances: 445
+Accuracy: 0.9975728155339806
+```
+
+## Conclusion
+
+This code provides implementation of a KNN classifier from scratch using Python. It demonstrates the steps involved in training and testing a KNN classifier, including data normalization, distance calculation, and prediction. By experimenting with different values of K, the code evaluates the performance of the classifier and provides accuracy metrics for each K value.
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request.
+
+
+## Authors
+
+- [Khaled Ashraf Hanafy Mahmoud - 20190186](https://github.com/KhaledAshrafH).
+- [Noura Ashraf Abdelnaby Mansour - 20190592](https://github.com/NouraAshraff).
+- [Samaa Khalifa Elsayed Othman - 20190247](https://github.com/SamaaKhalifa).
+
+## License
+
+This program is licensed under the [MIT License](LICENSE.md).
+
